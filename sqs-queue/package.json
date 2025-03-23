@@ -7,18 +7,21 @@
   "author": "Matt Smith",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^22.13.11",
-    "aws-cdk": "^2.1005.0",
+    "@aws-sdk/client-sqs": "^3.772.0",
     "aws-cdk-lib": "^2.185.0",
-    "constructs": "^10.4.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "constructs": "^10.4.2"
   },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "jest",
+    "test": "node ./bin/send_message.js",
     "cdk": "cdk",
     "clean": "rm -rf ./bin"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "aws-cdk": "^2.1005.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
   }
 }
