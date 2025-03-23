@@ -1,2 +1,4 @@
-# useful-aws-patterns
-Collection of simple tools for AWS
+# Useful AWS Patters
+
+A collection of simple tools for AWS.
+
