@@ -9,13 +9,13 @@ export default class SQSStack extends Stack {
       super(scope, id, props);
   
       // Create a SQS Queue and a dead letter queue 
-      const deadLetterQueue = new sqs.Queue(this, 'CsvUploadDeadLetterQueue', {
-        queueName: 'CsvUploadDeadLetterQueue',
+      const deadLetterQueue = new sqs.Queue(this, 'TestDeadLetterQueue', {
+        queueName: 'TestDeadLetterQueue',
         retentionPeriod: Duration.days(7)
       });
 
-      const uploadQueue = new sqs.Queue(this, 'CsvUploadQueue', {
-        queueName: 'CsvUploadQueue',
+      const uploadQueue = new sqs.Queue(this, 'TestQueue', {
+        queueName: 'TestQueue',
         visibilityTimeout: Duration.seconds(30),
         deadLetterQueue: {
           maxReceiveCount: 1,
@@ -24,8 +24,8 @@ export default class SQSStack extends Stack {
       });
 
       // Create a Lambda function that will be triggered by the SQS Queue.
-      const lambdaFunction = new lambdaNodejs.NodejsFunction(this, 'CsvUploadEventLambda', {
-        functionName: 'CsvUploadEventLambda',
+      const lambdaFunction = new lambdaNodejs.NodejsFunction(this, 'TestMessageEventLambda', {
+        functionName: 'TestMessageEventLambda',
         entry: join(__dirname, '.', 'lambda', 'lambda.js'),
       });
 
