@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# CDK-specific ignores
+cdk.out
+
+# Build folders
+bin/
