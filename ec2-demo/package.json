@@ -1,0 +1,26 @@
+{
+  "name": "ec2-demo",
+  "version": "1.0.0",
+  "description": "Simple demo of ec2 instance",
+  "main": "index.js",
+  "repository": "https://github.com/archembaud/useful-aws-patterns",
+  "author": "Matt Smith",
+  "license": "MIT",
+  "dependencies": {
+    "aws-cdk-lib": "^2.185.0",
+    "constructs": "^10.4.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "node ./bin/send_message.js",
+    "cdk": "cdk",
+    "clean": "rm -rf ./bin"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "aws-cdk": "^2.1005.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
