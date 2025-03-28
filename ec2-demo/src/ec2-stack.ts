@@ -64,6 +64,12 @@ export default class EC2Example extends Stack {
       resources: ['*'],  // Vile; be able to shut down other instances too.
     }));
     
+    // Ensure this role has the ability to destroy stacks
+    role.addToPolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: ['cloudformation:DeleteStack'],
+      resources: ['*'],  // More vile; will be able to kill other stacks
+    }));    
 
     // SSM Command to start a session
     new CfnOutput(this, 'ssmCommand', {

@@ -14,6 +14,7 @@ s3 = boto3.resource('s3')
 print('Downloading files from S3..')
 s3.meta.client.download_file('archembaud-resources', f'scripts/send_to_s3.py', './send_to_s3.py')
 s3.meta.client.download_file('archembaud-resources', f'scripts/shutdown_instance.py', './shutdown_instance.py')
+s3.meta.client.download_file('archembaud-resources', f'scripts/destroy_stack.py', './destroy_stack.py')
 " > ~/copy_from_s3.py
 
 # Do some work -collect some files, create some files and move the files to S3
@@ -22,4 +23,6 @@ python3 copy_from_s3.py
 echo "Computation Complete" > ~/test.txt
 python3 send_to_s3.py test.txt
 # Shut this instance down
-python3 shutdown_instance.py
+# python3 shutdown_instance.py
+# Destroy the stack
+python3 destroy_stack.py
