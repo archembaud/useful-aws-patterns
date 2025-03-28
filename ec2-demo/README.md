@@ -1,13 +1,12 @@
-# SQS queue Demo
+# EC2 Demo
 
-Simple SQS queue, with a subscribed lambda and some local scripts to test.
+A simple implementation of an EC2 instance deployment solution where the instance shuts itself down after it is finished its work.
 
 Here is the idea:
 
-* Deploy the stack; it will contain the SQS queue, a dead letter queue (which is not used here, but is good to have ready) and a lambda subscribed to the queue
-* Send a message to the deployed SQS queue. (Note: a test script has been included for this)
-* When a message lands in the queue, the lambda subscribed to the queue will catch the event and fire, processing the event and its contents (i.e. the message).
-* You can confirm this has occured by looking in the cloudwatch logs.
+* Deploy the stack. After the instance is activated, it will execute the configure_run.sh script.
+* Codes will be pulled from an S3 bucket as part of the configuration; these codes make it possible to copy results to S3, and to shut the instance down.
+* The configuration script then creates fake results (test.txt), sends it to S3 and then shuts down the instance.
 
 **NOTE**: The instructions below assume you have succesfully set up your AWS credentials and config.
 
@@ -26,11 +25,3 @@ To synthesize and/or deploy:
 yarn cdk synth
 yarn cdk deploy
 ```
-
-To test (i.e. send a message to your queue)
-
-```bash
-yarn test
-```
-
-**NOTE**: You will need to modify the send_message.ts file to include your own SQS Queue URL - obtained after deployment - and rebuilding.

@@ -12,8 +12,6 @@
   },
   "scripts": {
     "build": "tsc",
-    "watch": "tsc -w",
-    "test": "node ./bin/send_message.js",
     "cdk": "cdk",
     "clean": "rm -rf ./bin"
   },
