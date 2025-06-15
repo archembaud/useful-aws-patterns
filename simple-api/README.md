@@ -20,9 +20,9 @@ npm install
 npm run build
 ```
 
-3. Deploy the stack:
+3. Deploy the stack (Assuming you have your AWS credentials property set up in your environment):
 ```bash
-cdk deploy
+npm run cdk deploy
 ```
 
 ## API Endpoint
@@ -34,9 +34,20 @@ https://<api-id>.execute-api.<region>.amazonaws.com/prod/healthcheck
 
 You can test the API by making a GET request to the endpoint. It will return a JSON response with a "Hello World" message and a timestamp.
 
+```bash
+curl -X GET https://<api-id>.execute-api.<region>.amazonaws.com/prod/healthcheck
+```
+
+which should return something like:
+
+```bash
+{"message":"Hello World!","timestamp":"2025-06-15T05:14:45.942Z"}
+```
+
+
 ## Cleanup
 
 To remove all resources created by this stack:
 ```bash
-cdk destroy
+npm run cdk destroy
 ``` 
